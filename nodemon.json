@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "Adedeji%4099"
+    },
+    "jwtKey": "secretKey"
+}
