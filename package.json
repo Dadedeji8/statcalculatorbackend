@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "the backend for the statistics calculator",
   "main": "index.js",
+  "engines": {
+    "npm": "10.8.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
