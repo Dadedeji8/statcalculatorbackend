@@ -3,7 +3,7 @@ const User = require('../models/user');
 const userRoute = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+
 
 // GET users route
 userRoute.get('/', async (req, res, next) => {
@@ -51,7 +51,7 @@ userRoute.post('/login', async (req, res, next) => {
     if (isMatch) {
       const token = jwt.sign(
         { email: user.email, userId: user._id },
-        "secretKey",  // Use environment variable for the secret key
+        "secretKey",
         { expiresIn: '1h' }
       );
       res.status(200).json({ message: 'Auth successful', token, email: user.email });
@@ -89,5 +89,6 @@ userRoute.delete('/:userId', async (req, res, next) => {
     res.status(500).json({ message: 'Internal server error', error });
   }
 });
+
 
 module.exports = userRoute;
