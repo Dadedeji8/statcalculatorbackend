@@ -3,10 +3,10 @@ const morgan = require('morgan');
 const app = express();
 const port = 5000;
 const bodyParser = require('body-parser')
-const historyRoute = require('./history');
+const historyRoute = require('./routes/history');
 const mongoose = require('mongoose');
 const env = require('dotenv').config();
-const userRoute = require('./user')
+const userRoute = require('./routes/user')
 
 //Set up default mongoose connection
 const mongoDB = 'mongodb+srv://dadedeji8:Adedeji%4099@statisticalcalculator.flx8e.mongodb.net/?retryWrites=true&w=majority&appName=StatisticalCalculator';
