@@ -9,7 +9,7 @@ const env = require('dotenv').config();
 const userRoute = require('./routes/user')
 
 //Set up default mongoose connection
-const mongoDB = 'mongodb+srv://dadedeji8:Adedeji%4099@statisticalcalculator.flx8e.mongodb.net/?retryWrites=true&w=majority&appName=StatisticalCalculator';
+const mongoDB = 'mongodb+srv://dadedeji8:Adedeji99@statisticalcalculator.flx8e.mongodb.net/?retryWrites=true&w=majority&appName=StatisticalCalculator';
 mongoose.connect(mongoDB);
 
 
