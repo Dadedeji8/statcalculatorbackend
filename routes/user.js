@@ -26,9 +26,8 @@ userRoute.post('/signup', async (req, res, next) => {
     if (existingUser) {
       return res.status(409).json({ message: 'Email already registered' });
     }
-
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const saltRounds = 10
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     const newUser = new User({
       _id: new mongoose.Types.ObjectId(),
       email: req.body.email,

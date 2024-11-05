@@ -22,6 +22,7 @@ db.on('disconnected', () => console.log('MongoDB disconnected.'));
 
 // Middleware setup
 app.use(morgan('dev'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Replaces body-parser for URL-encoded form data
 app.use(
     cors({
