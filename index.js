@@ -8,7 +8,7 @@ const historyRoute = require('./routes/history');
 const userRoute = require('./routes/user');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 6000;
 
 // MongoDB connection URI from environment variables
 const mongoDB = 'mongodb+srv://dadedeji8:Adedeji99@statisticalcalculator.flx8e.mongodb.net/?retryWrites=true&w=majority&appName=StatisticalCalculator'
@@ -23,7 +23,11 @@ db.on('disconnected', () => console.log('MongoDB disconnected.'));
 // Middleware setup
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true })); // Replaces body-parser for URL-encoded form data
-app.use(cors());
+app.use(
+    cors({
+        origin: "*",
+    })
+);
 
 // CORS setup
 app.use((req, res, next) => {
@@ -38,7 +42,11 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/history', historyRoute);
-app.use('/user', userRoute);
+app.use('/api/user', userRoute);
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Server is alive lol' });
+})
+
 app.get('/ping', (req, res) => {
     res.status(200).json({ message: 'Server is alive' });
 });

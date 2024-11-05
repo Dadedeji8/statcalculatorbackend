@@ -18,7 +18,11 @@ userRoute.get('/', async (req, res, next) => {
 // POST /signup route
 userRoute.post('/signup', async (req, res, next) => {
   try {
+    console.log("Received signup request", req.body); // Debug: log request body
+
     const existingUser = await User.findOne({ email: req.body.email });
+    console.log("Existing user check result:", existingUser); // Debug: log result of existing user check
+
     if (existingUser) {
       return res.status(409).json({ message: 'Email already registered' });
     }
@@ -32,9 +36,11 @@ userRoute.post('/signup', async (req, res, next) => {
     });
 
     const result = await newUser.save();
+    console.log("New user saved:", result); // Debug: log result of save operation
     res.status(201).json({ message: 'User created successfully', user: result });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error from signup', error });
+    console.error("Error in signup route:", error); // Debug: log full error to console
+    res.status(500).json({ message: 'Internal server error from signup', error: error.message });
   }
 });
 
