@@ -22,7 +22,6 @@ router.get('/:id', checkAuth, (req, res, next) => {
 router.get('/:historyId', checkAuth, (req, res, next) => {
     // const historyId = req.params.historyId;
     const historyId = req.params.historyId;
-
     History.findById(historyId)
         .populate('user', 'email')  // Populate the 'user' field with the 'email' from the User model
         .then(doc => {
@@ -52,8 +51,6 @@ router.post('/', checkAuth, (req, res, next) => {
         })
         .catch(err => res.status(500).json({ error: err }));
 });
-
-
 router.delete('/:historyId', (req, res, next) => {
     const historyId = req.params.historyId
     History.deleteOne({ _id: historyId }).exec()
@@ -65,11 +62,8 @@ router.delete('/:historyId', (req, res, next) => {
                             message: doc,
                             state: 'state successfully deleted'
                         }
-
                         )
                 }
-
-
             }
 
         ).catch(err => {
