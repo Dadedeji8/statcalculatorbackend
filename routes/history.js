@@ -35,7 +35,7 @@ router.post('/', checkAuth, (req, res, next) => {
         name: req.body.name,
         result: req.body.result,
         location: req.body.location,
-        value: req.body.value,
+        values: req.body.values,
         note: req.body.note,
         date: req.body.date,
         user: req.user.userId  // Add the authenticated user's ID here
