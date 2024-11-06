@@ -2,9 +2,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
     const token = req.headers['Authorization'];
-    if (!token) {
-        return res.status(401).json({ message: "Auth failed: Token not provided" });
-    }
+    // if (!token) {
+    //     return res.status(401).json({ message: "Auth failed: Token not provided" });
+    // }
 
     try {
         const decoded = jwt.verify(token, "secretKey");
