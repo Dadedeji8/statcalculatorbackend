@@ -36,6 +36,7 @@ router.post('/', checkAuth, (req, res, next) => {
         name: req.body.name,
         result: req.body.result,
         location: req.body.location,
+        value: req.body.value,
         note: req.body.note,
         date: req.body.date,
         user: req.user.userId  // Add the authenticated user's ID here
@@ -44,6 +45,7 @@ router.post('/', checkAuth, (req, res, next) => {
     result.save()
         .then(results => {
             res.status(200).json({
+                ok: true,
                 message: 'History added',
                 result: results,
             });
