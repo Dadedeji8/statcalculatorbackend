@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
+
 // GET users route
 userRoute.get('/', async (req, res, next) => {
   try {
@@ -59,7 +60,14 @@ userRoute.post('/login', async (req, res, next) => {
         "secretKey",
         { expiresIn: '1h' }
       );
-      res.status(200).json({ message: 'Auth successful', token, email: user.email });
+      res.status(200).json({
+
+        ok: true
+        ,
+        message: 'Auth successful', token,
+        _id: user._id,
+        email: user.email
+      });
     } else {
       res.status(401).json({ message: 'Auth failed: Incorrect password' });
     }

@@ -3,7 +3,7 @@ const History = require('../models/history')
 router = express.Router()
 const mongoose = require('mongoose')
 const checkAuth = require('../chech-auth/check-auth')
-router.get('/user', checkAuth, (req, res, next) => {
+router.get('/:id', checkAuth, (req, res, next) => {
     // const userId = req.params.userId;
     const id = req.params.id;
 
